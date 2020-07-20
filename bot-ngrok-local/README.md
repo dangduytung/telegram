@@ -19,12 +19,13 @@ Go to `https://ngrok.com` > download `ngrok.zip`
     $ ngrok authtoken XXXX
 3. Fire it up                   # https://ngrok.com/docs
     $ ngrok http 80             # Will see Forwarding from ngrok.io to localhost
-4. [http://localhost:4040/inspect/http](http://localhost:4040/inspect/http)       # Admin all requests to ngrok
 ```
+Access : [http://localhost:4040/inspect/http](http://localhost:4040/inspect/http) to view all requests to ngrok
 
-### Telegram > Ngrok
-Use API setWebhook ([https://core.telegram.org/bots/api#setwebhook](https://core.telegram.org/bots/api#setwebhook)) to forward message from Chatbot to ngrok
+### Telegram > Ngrok > Localhost
+Use API setWebhook [https://core.telegram.org/bots/api#setwebhook](https://core.telegram.org/bots/api#setwebhook) to forward message from chatbot to ngrok
 `https://api.telegram.org/bot{TOKEN}/setWebhook?url=https://{id}.ngrok.io`<br>
+<br>
 Check set Webhook completed:<br>
 `https://api.telegram.org/bot{TOKEN}/getWebhookInfo`
 
