@@ -56,12 +56,12 @@ https://api.telegram.org/bot{TOKEN}/setWebhook?url=https://{id}.ngrok.io
 ### Bot commands description
 In @BotFather `/setcommands`<br>
 Add commands description like below:
-> start - Say "Hi" first
-> about - Introduce about Reminder Bot
-> list - Show list schedule reminders
-> new - Create a new schedule reminder
-> edit - Edit a schedule reminder
-> delete - Delete a schedule reminder
+> start - Say "Hi" first<br>
+> about - Introduce about Reminder Bot<br>
+> list - Show list schedule reminders<br>
+> new - Create a new schedule reminder<br>
+> edit - Edit a schedule reminder<br>
+> delete - Delete a schedule reminder<br>
 
 ### Cron job
 [https://www.npmjs.com/package/cron](https://www.npmjs.com/package/cron). CronJob expression is : `* * * * * *`
