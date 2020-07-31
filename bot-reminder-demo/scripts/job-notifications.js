@@ -5,7 +5,7 @@ const jobNotification = async () => {
     token: process.env.TELEGRAM_TOKEN
   }
 
-  await fetch('https://5460ed528602.ngrok.io', {
+  await fetch('https://b0604aa5d3ca.ngrok.io', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
