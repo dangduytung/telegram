@@ -34,13 +34,17 @@ class Constants {
     
     static get CONTENT_REMINDER_SCHEDULE() {
         return `<b>You can use the following formats:</b>
-dd.MM HH:mm:ss
-dd HH:mm:ss
-HH:mm:ss`
+dd.MM HH:mm
+dd HH:mm
+HH:mm`
     }
 
     static get DATE_TYPE() {
         return { INVALID : -1, YEAR : 1, MONTH : 2, DAY : 3, HOUR : 4, MINUTE : 5, SECOND : 6 }
+    }
+
+    static get DB_ACTION() {
+        return { NEW : 1, EDIT : 2, DELETE : 3}
     }
 }
 

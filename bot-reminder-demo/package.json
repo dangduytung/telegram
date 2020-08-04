@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "job": "node scripts/job-notifications.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",

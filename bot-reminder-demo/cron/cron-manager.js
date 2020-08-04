@@ -3,7 +3,7 @@ const CronJob = require('./cron-job')
 
 async function startCronJob(chatId, reminder) {
     // Parse time to cron expression
-    let cronTime = Utils.parse_date_cron(reminder.getSchedule());
+    let cronTime = Utils.generate_cron_by_time(reminder.getSchedule());
     
     console.log(`cronTime ${cronTime}`)
 

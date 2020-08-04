@@ -4,6 +4,14 @@ class Reminder {
     this.name = name;
   }
 
+  getId() {
+    return this.id;
+  }
+
+  setId(value) {
+    this.id = value;
+  }
+
   setName(value) {
     this.name = value;
   }
@@ -20,12 +28,12 @@ class Reminder {
     return this.schedule;
   }
 
-  getId() {
-    return this.id;
+  setScheduleStandard(value) {
+    this.scheduleStandard = value;
   }
 
-  setId(value) {
-    this.id = value;
+  getScheduleStandard() {
+    return this.scheduleStandard;
   }
 }
 

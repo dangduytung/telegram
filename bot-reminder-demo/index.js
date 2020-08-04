@@ -5,7 +5,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const port = 8080;
+const port = 3001;
 
 // Import modules
 const Constants = require('./utils/constants')
@@ -17,6 +17,7 @@ const deleteReminder = require('./command/delete-reminder')
 const editReminder = require('./command/edit-reminder')
 const about = require('./command/about.js')
 const sendMessage = require('./api/send-message')
+const Action = require('./loop/action')
 
 /** Match command regex expression */
 const COMMAND_LIST_REGEX = Constants.COMMAND_LIST + Constants.REGEX_ALL;
@@ -26,7 +27,6 @@ const COMMAND_DELETE_REGEX = Constants.COMMAND_DELETE + Constants.REGEX_ALL;
 const COMMAND_START_REGEX = Constants.COMMAND_START + Constants.REGEX_ALL;
 const COMMAND_ABOUT_REGEX = Constants.COMMAND_ABOUT + Constants.REGEX_ALL;
 
-/** Localhost */
 // Configurations
 app.use(bodyParser.json());
 
@@ -35,12 +35,11 @@ app.get("/", (req, res) => {
   res.send("Welcome to reminder bot demo");
 });
 
-/** Localhost */
 app.post('/', async (req, res) => {
 // module.exports = async (req, res) => {
   // console.log('BODY', req.body)
   if (req.body.message) {
-    console.log('text : ' + req.body.message.text)
+    console.log('input : ' + req.body.message.text)
   }
   if (req.body.callback_query) {
     console.log('callback_query : ' + JSON.stringify(req.body.callback_query))
@@ -103,12 +102,8 @@ app.post('/', async (req, res) => {
 
   // Send default message
   res.end('This is the ReminderBot Telegram.')
-}
+});
 
-/** Localhost */
-);
-
-/** Localhost */
 // Listening
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
