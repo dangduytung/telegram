@@ -1,10 +1,18 @@
 ### ReminderBotDemo
 Based on `https://janikvonrotz.ch/2020/01/18/build-a-stateful-serverless-telegram-bot-part-1/`, `https://github.com/janikvonrotz/hydrome-bot`
+<br>
+Flow :
+| Chatbot > Vercel (SSL) > EC2 (non SSL) > Chatbot
+<br>
+Using Telegram API webhook to forward message from Chatbot to Vercel -> EC2<br>
+Using Redis cloud DB for save schedules<br>
+Using ngrok for test localhost<br>
+Using cron job for notifications<br>
 
-### Install dependencies
-```bash
-npm i axios bluebird body-parser cron dotenv express node-fetch redis --save
-```
+### Amazon EC2
+* Using Amazon EC2 Ubuntu free tier for server running **ReminderBot**
+* Setup Amazon EC2 by follow `https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171`
+* Using `Nginx` to route public port `80` forward internal port of Nodejs Application
 
 ### Redis
 Use redis cloud trial [https://redislabs.com](https://redislabs.com)<br>
@@ -31,23 +39,7 @@ Run ngrok.exe
 ngrok http {port}               # Get link online to forward http://localhost:port and user http://localhost:4040/inspect/http to check
 ```
 
-### Vercel
-* Create file `vercel.json` and `.vercelignore`
-* Command environment variables:
-```bash
-vercel secrets add tungdd_bot_redis_uri ***
-vercel secrets add tungdd_bot_telegram_token ***
-vercel secrets list             # Check environment variables
-vercel secrets rename [old-name] [new-name]
-vercel secrets remove [secret-name]
-```
-* File `vercel.json` has param `env`, `routes`, `builds`
-* File `.vercelignore` similar `.gitignore` : Add some files, folders don't need upload to vercel.
-```bash
-printf ".env\nnode_modules\README.md" >> .vercelignore          # Add content to file `.vercelignore`
-```
-
-### Telegram Webhook
+### Telegram API Webhook
 Use Postmand to set webhook : receive message's telegram bot > ngrok > localhost
 ```javascript
 https://api.telegram.org/bot{TOKEN}/setWebhook?url=https://{id}.ngrok.io
@@ -85,4 +77,13 @@ Command:
 /delete
 /start
 /about
+```
+
+### Log
+* Using pm2 [https://www.npmjs.com/package/pm2](https://www.npmjs.com/package/pm2) for logging, monitoring Nodejs app
+
+```bash
+tail -f /var/log/nginx/*.log            # Log nginx
+pm2 list                                # List all app running on EC2
+pm2 monit                               # Log ReminderBot
 ```

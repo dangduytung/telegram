@@ -17,7 +17,7 @@ const deleteReminder = require('./command/delete-reminder')
 const editReminder = require('./command/edit-reminder')
 const about = require('./command/about.js')
 const sendMessage = require('./api/send-message')
-const Action = require('./loop/action')
+// const Action = require('./loop/action')
 
 /** Match command regex expression */
 const COMMAND_LIST_REGEX = Constants.COMMAND_LIST + Constants.REGEX_ALL;
@@ -33,6 +33,14 @@ app.use(bodyParser.json());
 // Home route
 app.get("/", (req, res) => {
   res.send("Welcome to reminder bot demo");
+});
+
+app.get("/test", (req, res) => {
+  res.send("Test ok");
+});
+
+app.post("/post", (req, res) => {
+  res.send("Post ok");
 });
 
 app.post('/', async (req, res) => {
