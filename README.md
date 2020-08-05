@@ -1,2 +1,2 @@
 # telegram
-Telegram's project
+Telegram projects
