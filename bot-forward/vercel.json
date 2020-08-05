@@ -1,0 +1,29 @@
+{
+    "version": 2,
+    "env": {
+      "URL_FORWARD": "@tungdd_bot_url_forward"
+    },
+    "builds": [{ "src": "index.js", "use": "@now/node-server" }],
+    "routes": [
+      {
+        "src": "/",
+        "dest": "/index.js",
+        "methods": ["GET"]
+      },
+      {
+        "src": "/test",
+        "dest": "/index.js",
+        "methods": ["GET"]
+      },
+      {
+        "src": "/",
+        "dest": "/index.js",
+        "methods": ["POST"]
+      },
+      {
+        "src": "/post",
+        "dest": "/index.js",
+        "methods": ["POST"]
+      }
+    ]
+  }
