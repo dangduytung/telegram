@@ -88,5 +88,6 @@ Command:
 ```bash
 tail -f /var/log/nginx/*.log            # Log nginx
 pm2 list                                # List all app running on EC2
-pm2 monit                               # Log ReminderBot
+pm2 monit                               # Monitoring
+pm2 logs                                # Log
 ```
