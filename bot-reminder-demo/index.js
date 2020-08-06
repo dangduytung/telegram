@@ -30,6 +30,8 @@ const COMMAND_DELETE_REGEX = Constants.COMMAND_DELETE + Constants.REGEX_ALL;
 const COMMAND_START_REGEX = Constants.COMMAND_START + Constants.REGEX_ALL;
 const COMMAND_ABOUT_REGEX = Constants.COMMAND_ABOUT + Constants.REGEX_ALL;
 
+const HEADER_TOKEN = process.env.HEADER_TOKEN;
+
 // Configurations
 app.use(bodyParser.json());
 
@@ -50,8 +52,13 @@ app.post("/post", (req, res) => {
 });
 
 app.post('/', async (req, res) => {
-// module.exports = async (req, res) => {
-  // console.log('BODY', req.body)
+
+  /** Check header_token */
+  if (HEADER_TOKEN !== req.headers['header_token']) {
+    console.warn('Wrong header_token');
+    return res.end('Wrong header_token');
+  }
+  
   if (req.body.message) {
     console.log('input : ' + req.body.message.text)
   }
@@ -61,7 +68,7 @@ app.post('/', async (req, res) => {
 
   // Check if Telegram message
   if (req.body && (req.body.message || req.body.callback_query)) {
-    // Get message object
+    
     var message = {}
     if (req.body.message) {
       message = req.body.message
