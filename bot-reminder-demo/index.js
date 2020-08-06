@@ -55,8 +55,8 @@ app.post('/', async (req, res) => {
 
   /** Check header_token */
   if (HEADER_TOKEN !== req.headers['header-token']) {
-    console.warn('Wrong header_token');
-    return res.end('Wrong header_token');
+    console.warn('Wrong header-token');
+    return res.end('Wrong header-token');
   }
   
   if (req.body.message) {
