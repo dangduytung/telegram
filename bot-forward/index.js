@@ -28,7 +28,7 @@ app.post("/", async (req, res) => {
   console.log(process.env.HEADER_TOKEN)
   await fetch(process.env.URL_FORWARD, {
     method: "POST",
-    headers: { "Content-Type": "application/json", "HEADER_TOKEN": process.env.HEADER_TOKEN },
+    headers: { "Content-Type": "application/json", "HEADER-TOKEN": process.env.HEADER_TOKEN },
     body: JSON.stringify(req.body),
   });
 
