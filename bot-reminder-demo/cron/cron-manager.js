@@ -5,7 +5,7 @@ async function startCronJob(chatId, reminder) {
     // Parse time to cron expression
     let cronTime = Utils.generate_cron_by_time(reminder.getSchedule());
     
-    console.log(`cronTime ${cronTime}`)
+    // console.log(`cronTime ${cronTime}`)
 
     // Active cron expression
     if (cronTime) CronJob.jobStart(chatId, reminder.getId(), cronTime, reminder.getName())

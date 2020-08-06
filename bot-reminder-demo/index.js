@@ -10,13 +10,16 @@ const port = 3001;
 // Import modules
 const Constants = require('./utils/constants')
 const { get } = require('./redis/redis')
+
+const init = require('./init')
+const sendMessage = require('./api/send-message')
 const start = require('./command/start')
 const newReminder = require('./command/new-reminder')
 const listReminders = require('./command/list-reminders')
 const deleteReminder = require('./command/delete-reminder')
 const editReminder = require('./command/edit-reminder')
 const about = require('./command/about.js')
-const sendMessage = require('./api/send-message')
+
 // const Action = require('./loop/action')
 
 /** Match command regex expression */
@@ -29,6 +32,9 @@ const COMMAND_ABOUT_REGEX = Constants.COMMAND_ABOUT + Constants.REGEX_ALL;
 
 // Configurations
 app.use(bodyParser.json());
+
+// Init if have keys on redis (case reboot app)
+init();
 
 // Home route
 app.get("/", (req, res) => {

@@ -4,7 +4,7 @@ const { set, del, get, hset, incr } = require("../redis/redis");
 const Reminder = require("../model/reminder");
 const Constants = require("../utils/constants");
 const Utils = require("../utils/utils")
-const CronManager = require("../cron/cron-manager");    //localhost
+const CronManager = require("../cron/cron-manager");
 // const Action = require("../loop/action");
 
 var keySetCtxRequest;

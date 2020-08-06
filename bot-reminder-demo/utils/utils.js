@@ -224,6 +224,7 @@ function generate_date_cron(month, day, hour, minute, second) {
   day != null ? (ret += " " + day) : (ret += " *");
   month != null ? (ret += " " + month) : (ret += " *");
   ret += " *";
+
   console.log(ret);
   return ret;
 }
