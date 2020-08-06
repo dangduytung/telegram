@@ -25,10 +25,10 @@ app.post("/post", (req, res) => {
 
 app.post("/", async (req, res) => {
   // console.log("BODY", req.body);
-
+  console.log(process.env.HEADER_TOKEN)
   await fetch(process.env.URL_FORWARD, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "HEADER_TOKEN": process.env.HEADER_TOKEN },
     body: JSON.stringify(req.body),
   });
 

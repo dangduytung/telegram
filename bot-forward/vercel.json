@@ -1,7 +1,8 @@
 {
     "version": 2,
     "env": {
-      "URL_FORWARD": "@tungdd_bot_url_forward"
+      "URL_FORWARD": "@tungdd_bot_url_forward",
+      "HEADER_TOKEN": "@tungdd_bot_header_token"
     },
     "builds": [{ "src": "index.js", "use": "@now/node-server" }],
     "routes": [
