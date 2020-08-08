@@ -1,0 +1,20 @@
+{
+    "builds": [{
+        "src": "index.js",
+        "use": "@now/node-server"
+    }],
+    "env": {
+        "OPENWEATHER_API_KEY": "@tungdd_bot_openweather_api_key",
+        "OPENWEATHER_API_URL": "http://api.openweathermap.org/data/2.5/weather?q=",
+        "TELEGRAM_API_TOKEN": "@tungdd_bot_telegram_weather_token"
+    },
+    "routes": [{
+        "src": "/",
+        "dest": "/index.js",
+        "methods": ["GET"]
+    }, {
+        "src": "/bot-weather",
+        "dest": "/index.js",
+        "methods": ["POST"]
+    }]
+}
