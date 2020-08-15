@@ -55,12 +55,18 @@ function get_forecast(city) {
   return axios
     .get(new_url)
     .then((response) => {
+      let weather_desc;
+      if (response.data.weather != undefined && response.data.weather.length > 0) {
+        weather_desc = response.data.weather[0].main + ', ' + response.data.weather[0].description;
+      }
       let temp = response.data.main.temp;
+      let humi = response.data.main.humidity;
+      let wind_speed = response.data.wind.speed;
+
       // Converts temperature from Kelvin to Celsius
       temp = Math.round(temp - 273.15);
       let city_name = response.data.name;
-      let resp = "It's " + temp + "&#x2103; in " + city_name;
-      console.log("resp : " + resp);
+      let resp = `${city_name} ~ weather: ${weather_desc} | temp: ${temp} &#x2103; | humi: ${humi} % | wind: ${wind_speed} m/s`;
       return resp;
     })
     .catch((error) => {
